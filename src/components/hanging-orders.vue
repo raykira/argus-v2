@@ -5,15 +5,31 @@
     :items-per-page="5"
     class="elevation-1"
   >
-    <template v-slot:item.action="{  }">
-      <v-btn color="purple" dark>details</v-btn>
+    <template v-slot:item.action="{}">
+      <v-dialog transition="dialog-bottom-transition" max-width="600">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="#7E57C2" dark v-bind="attrs" v-on="on"
+            >details</v-btn
+          >
+        </template>
+        <template v-slot:default="dialog">
+          <v-card>
+            <v-card-text>
+              <div class="text-h2 pa-12">Hello world!</div>
+            </v-card-text>
+            <v-card-actions class="justify-end">
+              <v-btn text @click="dialog.value = false">Close</v-btn>
+            </v-card-actions>
+          </v-card>
+        </template>
+      </v-dialog>
     </template>
   </v-data-table>
 </template>
 
 <script>
 export default {
-  name: "normal-table",
+  name: "hanging-orders",
   data() {
     return {
       headers: [

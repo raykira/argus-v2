@@ -1,10 +1,29 @@
 <template>
   <!-- <hello-world /> -->
-  <v-container>
+  <v-container style="height: 100vh; overflow-x: hidden">
+    <v-row>
+      <v-toolbar flat style="background: none;">
+        <v-toolbar-title class="grey--text"> Dashboard </v-toolbar-title>
+
+        <v-spacer></v-spacer>
+
+        <v-btn icon>
+          <v-icon>mdi-magnify</v-icon>
+        </v-btn>
+
+        <v-btn icon>
+          <v-icon>mdi-apps</v-icon>
+        </v-btn>
+
+        <v-btn icon>
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+      </v-toolbar>
+    </v-row>
     <v-row class="above-section">
       <v-col cols="4">
-        <v-card class="mx-auto d-flex flex-row" max-width="344">
-          <div class="square" style="background-color: #ff9800">
+        <v-card class="ml-0 d-flex flex-row" max-width="344" :elevation="0">
+          <div class="square" style="background-color: #fc9107">
             <v-icon large color="white"> mdi-note-multiple-outline </v-icon>
           </div>
           <div>
@@ -16,8 +35,8 @@
         </v-card>
       </v-col>
       <v-col cols="4">
-        <v-card class="mx-auto d-flex flex-row" max-width="344">
-          <div class="square" style="background-color: #e53935">
+        <v-card class="d-flex flex-row" max-width="344" :elevation="0">
+          <div class="square" style="background-color: #60b664">
             <v-icon large color="white">
               mdi-newspaper-variant-multiple-outline
             </v-icon>
@@ -31,8 +50,8 @@
         </v-card>
       </v-col>
       <v-col cols="4">
-        <v-card class="mx-auto d-flex flex-row" max-width="344">
-          <div class="square" style="background-color: #4caf50">
+        <v-card class="d-flex flex-row" max-width="344" :elevation="0">
+          <div class="square" style="background-color: #ea4642">
             <v-icon large color="white"> mdi-check-network-outline </v-icon>
           </div>
           <div>
@@ -44,57 +63,34 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-row style="background-color: #f3e5f5; padding: 20px 0">
-      <v-col cols="6">
-        <v-card class="mt-4 mx-auto" max-width="400">
-          <v-sheet
-            class="v-sheet--offset mx-auto"
-            color="purple"
-            elevation="12"
-            max-width="calc(100% - 32px)"
-          >
-            <v-sparkline
-              :labels="labels"
-              :value="value"
-              color="white"
-              line-width="2"
-              padding="16"
-            ></v-sparkline>
-          </v-sheet>
-
-          <v-card-text class="pt-0">
-            <div class="text-h6 font-weight-light mb-2">Orders</div>
-            <div class="subheading font-weight-light grey--text">
-              Last Campaign Performance
-            </div>
-            <v-divider class="my-2"></v-divider>
-            <v-icon class="mr-2" small> mdi-clock </v-icon>
-            <span class="text-caption grey--text font-weight-light"
-              >last order 26 minutes ago</span
-            >
-          </v-card-text>
-        </v-card>
+    <v-row style="padding: 50px 0 20px">
+      <v-col cols="4">
+        <orders-chart />
       </v-col>
-      <v-col cols="6">
-        <div class="select-parent">
-          <v-select
-            v-model="select"
-            :items="items"
-            item-text="state"
-            item-value="abbr"
-            label="Select"
-            persistent-hint
-            return-object
-            single-line
-          >
-          </v-select>
-        </div>
+      <v-col cols="4">
+        <orders-chart />
+      </v-col>
+      <v-col cols="4">
+        <orders-chart />
+      </v-col>
+    </v-row>
+    <v-row style="padding: 14px">
+      <v-col
+        cols="12"
+        style="
+          text-align: center;
+          background-color: #e73e3a;
+          color: white;
+          line-height: 3;
+        "
+      >
+        <h2>ORDERS TABLES</h2>
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="12">
         <h4 style="margin-bottom: 10px">Hanging Buying Orders</h4>
-        <normal-table />
+        <hanging-orders />
       </v-col>
     </v-row>
     <v-row>
@@ -108,48 +104,27 @@
 
 <script>
 import CompanyOrders from "../components/company-orders.vue";
-import NormalTable from "../components/normal-table.vue";
+import HangingOrders from "../components/hanging-orders.vue";
+import OrdersChart from "../components/home/orders-chart.vue";
 // import HelloWorld from "../components/HelloWorld";
 
 export default {
   name: "Home",
 
   components: {
-    NormalTable,
     CompanyOrders,
+    HangingOrders,
+    OrdersChart,
     // HelloWorld,
   },
-
-  data: () => ({
-    labels: ["12am", "3am", "6am", "9am", "12pm", "3pm", "6pm", "9pm"],
-    value: [200, 675, 410, 390, 310, 460, 250, 240],
-    items: [
-      "Daily Sales Value",
-      "Daily Sales Number",
-      "Weekly Sales Value",
-      "Weekly Sales Nnumber",
-    ],
-  }),
 };
 </script>
 
 <style scoped>
-.above-section {
-  /* margin-bottom: 100px; */
-  margin: 10px;
-}
 .square {
   padding: 20px;
   width: 80px;
   margin: 20px;
   text-align: center;
-}
-.v-sheet--offset {
-  top: -24px;
-  position: relative;
-}
-.select-parent {
-  width: 300px;
-  margin: auto;
 }
 </style>
