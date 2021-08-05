@@ -7,16 +7,17 @@
       class="elevation-0"
     >
       <template v-slot:item.action="{}">
-        <v-dialog transition="dialog-bottom-transition">
+        <v-dialog transition="dialog-bottom-transition" max-width="600">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn color="#ea4642" dark v-bind="attrs" v-on="on">details</v-btn>
+            <v-btn color="#000000" dark v-bind="attrs" v-on="on">details</v-btn>
           </template>
-          <template>
+          <template v-slot:default="dialog">
             <v-card>
-              <v-card-text style="padding: 20px 0 0 0">
-                <add-invoice />
+              <v-card-text>
+                <div class="text-h2 pa-12">Hello world!</div>
               </v-card-text>
               <v-card-actions class="justify-end">
+                <v-btn text @click="dialog.value = false">Close</v-btn>
               </v-card-actions>
             </v-card>
           </template>
@@ -29,7 +30,7 @@
           dark
           @click.stop="dialog = true"
         >
-          Add New Invoice
+          Add New Customer
         </v-btn>
 
         <v-dialog
@@ -40,7 +41,7 @@
             </v-card-title>
 
             <v-card-text>
-              <add-invoice />
+              <add-customer />
             </v-card-text>
 
             <v-card-actions>
@@ -53,62 +54,62 @@
 </template>
 
 <script>
-import AddInvoice from '../../components/add-invoice.vue';
+import AddCustomer from '../../components/add-customer.vue';
 export default {
-  components: { AddInvoice },
-  name: "PurchaseInvoices",
+  components: { AddCustomer },
+  name: "Customers",
   data() {
     return {
       dialog: false,
       headers: [
         {
-          text: "invoice Id",
+          text: "Customer Id",
           align: "start",
           sortable: false,
           value: "id",
         },
-        // { text: "Item Name", value: "name" },
+        { text: "Customer Name", value: "name" },
         { text: "Details", value: "action" },
       ],
       HangingOrders: [
         {
-          name: "Car",
+          name: "Ahmad",
           id: 159,
         },
         {
-          name: "Chair",
+          name: "Mohammad",
           id: 237,
         },
         {
-          name: "Door",
+          name: "Khaled",
           id: 262,
         },
         {
-          name: "Table",
+          name: "Bayrak",
           id: 305,
         },
         {
-          name: "Book",
+          name: "Abd",
           id: 356,
         },
         {
-          name: "Knife",
+          name: "Nala",
           id: 375,
         },
         {
-          name: "Fork",
+          name: "Hiba",
           id: 392,
         },
         {
-          name: "Spoon",
+          name: "Toleen",
           id: 408,
         },
         {
-          name: "Plate",
+          name: "Tala",
           id: 452,
         },
         {
-          name: "House",
+          name: "Moustafa",
           id: 518,
         },
       ],

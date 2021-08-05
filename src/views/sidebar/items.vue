@@ -9,12 +9,12 @@
       <template v-slot:item.action="{}">
         <v-dialog transition="dialog-bottom-transition">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn color="#ea4642" dark v-bind="attrs" v-on="on">details</v-btn>
+            <v-btn color="#7E57C2" dark v-bind="attrs" v-on="on">details</v-btn>
           </template>
           <template>
             <v-card>
-              <v-card-text style="padding: 20px 0 0 0">
-                <add-invoice />
+              <v-card-text  style="padding: 20px 0 0 0">
+                <add-item />
               </v-card-text>
               <v-card-actions class="justify-end">
               </v-card-actions>
@@ -29,7 +29,7 @@
           dark
           @click.stop="dialog = true"
         >
-          Add New Invoice
+          Add New Item
         </v-btn>
 
         <v-dialog
@@ -40,7 +40,7 @@
             </v-card-title>
 
             <v-card-text>
-              <add-invoice />
+              <add-item />
             </v-card-text>
 
             <v-card-actions>
@@ -53,21 +53,21 @@
 </template>
 
 <script>
-import AddInvoice from '../../components/add-invoice.vue';
+import AddItem from '../../components/add-item.vue';
 export default {
-  components: { AddInvoice },
-  name: "PurchaseInvoices",
+  components: { AddItem },
+  name: "Bills",
   data() {
     return {
       dialog: false,
       headers: [
         {
-          text: "invoice Id",
+          text: "Item Id",
           align: "start",
           sortable: false,
           value: "id",
         },
-        // { text: "Item Name", value: "name" },
+        { text: "Item Name", value: "name" },
         { text: "Details", value: "action" },
       ],
       HangingOrders: [

@@ -1,13 +1,13 @@
 <template>
   <div class="addnewitem">
-    <div class="ml-auto d-flex" width="800px" style="justify-content: center">
-      <v-card class="" max-width="" width="">
-        <v-card-subtitle
+    <div class="ml-auto d-flex" width="800px" style="justify-content: center; padding:0">
+      <v-card class="" max-width="" width="" style="maring:0">
+        <!-- <v-card-subtitle
           class="pb-0"
-          style="background-color: #fc9107; color: white"
+          style="background-color: #7e57c2; color: white"
         >
           Item
-        </v-card-subtitle>
+        </v-card-subtitle> -->
         <v-container>
           <v-row>
             <v-col cols="6">
@@ -70,7 +70,7 @@
                   class="white--text align-end"
                   height="200"
                   width="300"
-                  src="../../assets/phone.jpg"
+                  src="../assets/phone.jpg"
                 >
                   <v-card-title>Black Case</v-card-title>
                 </v-img>
@@ -122,7 +122,11 @@
             color="red"
             value="red"
             hide-details
+           style="padding-bottom: 30px"
           ></v-checkbox>
+          <v-text-field style="padding: 0 35px" label="barcode">
+
+          </v-text-field>
           <v-btn color="#fc9107" text class="ml-auto"> Add </v-btn>
         </v-card-actions>
       </v-card>

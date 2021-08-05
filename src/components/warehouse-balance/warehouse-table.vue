@@ -1,5 +1,5 @@
 <template>
-  <v-card   style="margin: 24px 0 0 0">
+  <v-card style="margin: 24px 0 0 0" class="elevation-0">
     <v-card-title>
       <v-text-field
         v-model="search"
@@ -7,12 +7,14 @@
         label="Search"
         single-line
         hide-details
+        class="elevation-0"
       ></v-text-field>
     </v-card-title>
     <v-data-table
       :headers="headers"
       :items="desserts"
       :search="search"
+      class="elevation-0"
     ></v-data-table>
   </v-card>
 </template>
@@ -25,7 +27,7 @@ export default {
       myloadingvariable: false, //note::: this should be true when loading data, after that it should be false
       search: "",
       headers: [
-        {   
+        {
           text: "Item Id",
           align: "start",
           filterable: false,

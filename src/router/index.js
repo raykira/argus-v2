@@ -3,7 +3,11 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import WarehouseBalance from "../views/sidebar/warehouse-balance.vue"
-import AddNewItem from "../views/sidebar/add-new-item.vue"
+import Items from "../views/sidebar/items.vue"
+import Invoices from "../views/sidebar/invoices"
+import EntryVouchers from "../views/sidebar/entry-vouchers"
+import PurchaseOrders from "../views/sidebar/purchase-orders"
+import Customers from "../views/sidebar/customers"
 
 Vue.use(VueRouter);
 
@@ -24,9 +28,29 @@ const routes = [
     component: WarehouseBalance,
   },
   {
-    path: "/add-new-item",
-    name: "add-new-item",
-    component: AddNewItem
+    path: "/items",
+    name: "items",
+    component: Items
+  },
+  {
+    path: "/invoices",
+    name: "invoices",
+    component: Invoices
+  },
+  {
+    path: "/entry-vouchers",
+    name: "entry-vouchers",
+    component: EntryVouchers
+  },
+  {
+    path: "/purchase-orders",
+    name: "purchase-orders",
+    component: PurchaseOrders
+  },
+  {
+    path: "/customers",
+    name: "customers",
+    component: Customers
   }
 ];
 

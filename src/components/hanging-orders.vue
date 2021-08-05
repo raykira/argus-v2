@@ -3,7 +3,7 @@
     :headers="headers"
     :items="HangingOrders"
     :items-per-page="5"
-    class="elevation-1"
+    class="elevation-0"
   >
     <template v-slot:item.action="{}">
       <v-dialog transition="dialog-bottom-transition" max-width="600">
